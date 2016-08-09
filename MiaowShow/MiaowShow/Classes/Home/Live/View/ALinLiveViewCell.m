@@ -276,12 +276,17 @@ bool _isSelected = NO;
         _emitterLayer = nil;
     }
     
-    [[SDWebImageDownloader sharedDownloader] downloadImageWithURL:[NSURL URLWithString:placeHolderUrl] options:SDWebImageDownloaderUseNSURLCache progress:nil completed:^(UIImage *image, NSData *data, NSError *error, BOOL finished) {
-        dispatch_async(dispatch_get_main_queue(), ^{
-            [self.parentVc showGifLoding:nil inView:self.placeHolderView];
-            self.placeHolderView.image = [UIImage blurImage:image blur:0.8];
-        });
-    }];
+    if (placeHolderUrl) {
+        [[SDWebImageDownloader sharedDownloader] downloadImageWithURL:[NSURL URLWithString:placeHolderUrl] options:SDWebImageDownloaderUseNSURLCache progress:nil completed:^(UIImage *image, NSData *data, NSError *error, BOOL finished) {
+            dispatch_async(dispatch_get_main_queue(), ^{
+                if (image) {  //可以增加一个默认图片
+                    [self.parentVc showGifLoding:nil inView:self.placeHolderView];
+                    self.placeHolderView.image = [UIImage blurImage:image blur:0.8];
+                }
+            });
+        }];
+    }
+
     
     IJKFFOptions *options = [IJKFFOptions optionsByDefault];
     [options setPlayerOptionIntValue:1  forKey:@"videotoolbox"];
