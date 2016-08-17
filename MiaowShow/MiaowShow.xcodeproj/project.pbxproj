@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3FFAFC861D64ACF400204954 /* IJKMediaFramework.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3FFAFC851D64ACF400204954 /* IJKMediaFramework.framework */; };
 		70D249A48322E2E32E1F0507 /* libPods-MiaowShow.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 6372155D4C47F383711AE057 /* libPods-MiaowShow.a */; };
 		BB219BC61D22D06200AF44C1 /* ALinUserView.m in Sources */ = {isa = PBXBuildFile; fileRef = BB219BC51D22D06200AF44C1 /* ALinUserView.m */; };
 		BB219BC81D22D06C00AF44C1 /* ALinUserView.xib in Resources */ = {isa = PBXBuildFile; fileRef = BB219BC71D22D06C00AF44C1 /* ALinUserView.xib */; };
@@ -92,6 +93,7 @@
 
 /* Begin PBXFileReference section */
 		343A1FB4B109EE1106C1EA18 /* Pods-MiaowShow.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MiaowShow.release.xcconfig"; path = "Pods/Target Support Files/Pods-MiaowShow/Pods-MiaowShow.release.xcconfig"; sourceTree = "<group>"; };
+		3FFAFC851D64ACF400204954 /* IJKMediaFramework.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = IJKMediaFramework.framework; sourceTree = "<group>"; };
 		6372155D4C47F383711AE057 /* libPods-MiaowShow.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-MiaowShow.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		BB219BC41D22D06200AF44C1 /* ALinUserView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ALinUserView.h; sourceTree = "<group>"; };
 		BB219BC51D22D06200AF44C1 /* ALinUserView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ALinUserView.m; sourceTree = "<group>"; };
@@ -218,6 +220,7 @@
 				BB5956CA1D300A7A004C125B /* IJKMediaFramework.framework in Frameworks */,
 				BBE540F61D0F274400BF723E /* libz.tbd in Frameworks */,
 				70D249A48322E2E32E1F0507 /* libPods-MiaowShow.a in Frameworks */,
+				3FFAFC861D64ACF400204954 /* IJKMediaFramework.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -252,6 +255,7 @@
 			children = (
 				BBE540F51D0F274400BF723E /* libz.tbd */,
 				6372155D4C47F383711AE057 /* libPods-MiaowShow.a */,
+				3FFAFC851D64ACF400204954 /* IJKMediaFramework.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -880,7 +884,7 @@
 				TargetAttributes = {
 					BBE540AC1D0F261900BF723E = {
 						CreatedOnToolsVersion = 7.3.1;
-						DevelopmentTeam = AL4GV8C88Y;
+						DevelopmentTeam = DD6C2YQSJ9;
 					};
 					BBE540C51D0F261900BF723E = {
 						CreatedOnToolsVersion = 7.3.1;
@@ -963,7 +967,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
 		EABFBD1F97C1CF5DA8973C92 /* [CP] Copy Pods Resources */ = {
@@ -1188,6 +1192,7 @@
 					"$(PROJECT_DIR)/MiaowShow/Frameworks",
 					"$(PROJECT_DIR)/MiaowShow",
 					"$(PROJECT_DIR)/MiaowShow/Classes/Frameworks",
+					"$(PROJECT_DIR)",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = MiaowShow/Classes/Resource/PrefixHeader.pch;
@@ -1212,6 +1217,7 @@
 					"$(PROJECT_DIR)/MiaowShow/Frameworks",
 					"$(PROJECT_DIR)/MiaowShow",
 					"$(PROJECT_DIR)/MiaowShow/Classes/Frameworks",
+					"$(PROJECT_DIR)",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = MiaowShow/Classes/Resource/PrefixHeader.pch;

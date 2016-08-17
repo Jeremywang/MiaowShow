@@ -10,7 +10,7 @@
 #import <UIKit/UIKit.h>
 
 /// 视频分辨率(都是16：9 当此设备不支持当前分辨率，自动降低一级)
-typedef NS_ENUM(NSUInteger, LFLiveVideoSessionPreset){
+typedef NS_ENUM (NSUInteger, LFLiveVideoSessionPreset){
     /// 低分辨率
     LFCaptureSessionPreset360x640 = 0,
     /// 中分辨率
@@ -20,7 +20,7 @@ typedef NS_ENUM(NSUInteger, LFLiveVideoSessionPreset){
 };
 
 /// 视频质量
-typedef NS_ENUM(NSUInteger, LFLiveVideoQuality){
+typedef NS_ENUM (NSUInteger, LFLiveVideoQuality){
     /// 分辨率： 360 *640 帧数：15 码率：500Kps
     LFLiveVideoQuality_Low1 = 0,
     /// 分辨率： 360 *640 帧数：24 码率：800Kps
@@ -43,25 +43,28 @@ typedef NS_ENUM(NSUInteger, LFLiveVideoQuality){
     LFLiveVideoQuality_Default = LFLiveVideoQuality_Low2
 };
 
-@interface LFLiveVideoConfiguration : NSObject<NSCoding,NSCopying>
+@interface LFLiveVideoConfiguration : NSObject<NSCoding, NSCopying>
 
 /// 默认视频配置
 + (instancetype)defaultConfiguration;
 /// 视频配置(质量)
 + (instancetype)defaultConfigurationForQuality:(LFLiveVideoQuality)videoQuality;
 
-/// 视频配置(质量 & 方向)
-+ (instancetype)defaultConfigurationForQuality:(LFLiveVideoQuality)videoQuality orientation:(UIInterfaceOrientation)orientation;
+/// 视频配置(质量 & 是否是横屏)
++ (instancetype)defaultConfigurationForQuality:(LFLiveVideoQuality)videoQuality landscape:(BOOL)landscape;
 
 #pragma mark - Attribute
 ///=============================================================================
 /// @name Attribute
 ///=============================================================================
-/// 视频的分辨率，宽高务必设定为 2 的倍数，否则解码播放时可能出现绿边
+/// 视频的分辨率，宽高务必设定为 2 的倍数，否则解码播放时可能出现绿边(这个videoSizeRespectingAspectRatio设置为YES则可能会改变)
 @property (nonatomic, assign) CGSize videoSize;
 
+/// 输出图像是否等比例,默认为NO
+@property (nonatomic, assign) BOOL videoSizeRespectingAspectRatio;
+
 /// 视频输出方向
-@property (nonatomic, assign) UIInterfaceOrientation orientation;
+@property (nonatomic, assign) BOOL landscape;
 
 /// 视频的帧率，即 fps
 @property (nonatomic, assign) NSUInteger videoFrameRate;
@@ -88,9 +91,6 @@ typedef NS_ENUM(NSUInteger, LFLiveVideoQuality){
 @property (nonatomic, assign) LFLiveVideoSessionPreset sessionPreset;
 
 ///< ≈sde3分辨率
-@property (nonatomic, assign,readonly) NSString *avSessionPreset;
-
-///< 是否裁剪
-@property (nonatomic, assign,readonly) BOOL isClipVideo;
+@property (nonatomic, assign, readonly) NSString *avSessionPreset;
 
 @end

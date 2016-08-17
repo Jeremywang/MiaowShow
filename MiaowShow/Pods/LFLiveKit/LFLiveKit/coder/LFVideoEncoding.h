@@ -14,17 +14,17 @@
 /// 编码器编码后回调
 @protocol LFVideoEncodingDelegate <NSObject>
 @required
-- (void)videoEncoder:(nullable id<LFVideoEncoding>)encoder videoFrame:(nullable LFVideoFrame*)frame;
+- (void)videoEncoder:(nullable id<LFVideoEncoding>)encoder videoFrame:(nullable LFVideoFrame *)frame;
 @end
 
 /// 编码器抽象的接口
 @protocol LFVideoEncoding <NSObject>
 @required
-- (void)encodeVideoData:(nullable CVImageBufferRef)pixelBuffer timeStamp:(uint64_t)timeStamp;
+- (void)encodeVideoData:(nullable CVPixelBufferRef)pixelBuffer timeStamp:(uint64_t)timeStamp;
 - (void)stopEncoder;
 @optional
 @property (nonatomic, assign) NSInteger videoBitRate;
-- (nullable instancetype)initWithVideoStreamConfiguration:(nullable LFLiveVideoConfiguration*)configuration;
+- (nullable instancetype)initWithVideoStreamConfiguration:(nullable LFLiveVideoConfiguration *)configuration;
 - (void)setDelegate:(nullable id<LFVideoEncodingDelegate>)delegate;
 
 @end

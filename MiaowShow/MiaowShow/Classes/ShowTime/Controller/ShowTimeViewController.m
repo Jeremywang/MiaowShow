@@ -34,7 +34,7 @@
 - (LFLiveSession*)session{
     if(!_session){
         /***   默认分辨率368 ＊ 640  音频：44.1 iphone6以上48  双声道  方向竖屏 ***/
-        _session = [[LFLiveSession alloc] initWithAudioConfiguration:[LFLiveAudioConfiguration defaultConfiguration] videoConfiguration:[LFLiveVideoConfiguration defaultConfigurationForQuality:LFLiveVideoQuality_Medium2] liveType:LFLiveRTMP];
+        _session = [[LFLiveSession alloc] initWithAudioConfiguration:[LFLiveAudioConfiguration defaultConfiguration] videoConfiguration:[LFLiveVideoConfiguration defaultConfigurationForQuality:LFLiveVideoQuality_Medium2]];
     
         /**    自己定制高质量音频128K 分辨率设置为720*1280 方向竖屏 */
         /*
@@ -111,7 +111,7 @@
     if (sender.selected) { // 开始直播
         LFLiveStreamInfo *stream = [LFLiveStreamInfo new];
         // 如果是跟我blog教程搭建的本地服务器, 记得填写你电脑的IP地址
-        stream.url = @"rtmp://192.168.1.102:1935/rtmplive/room";
+        stream.url = @"rtmp://192.168.0.8:1935/jstream/room";
         self.rtmpUrl = stream.url;
         [self.session startLive:stream];
     }else{ // 结束直播
